@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMINA // High Performance Hardware</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@700;800&display=swap');
+        
+        :root {
+            --accent: #d4ff00; /* Cyber Lime */
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .heading-font { font-family: 'Syne', sans-serif; }
+
+        .accent-text { color: var(--accent); }
+        .accent-bg { background-color: var(--accent); }
+        .accent-border { border-color: var(--accent); }
+
+        .grid-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        .noise {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            opacity: 0.05;
+            z-index: 9999;
+            background: url('https://grainy-gradients.vercel.app/noise.svg');
+        }
+
+        .neo-brutal-card {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .neo-brutal-card:hover {
+            border-color: var(--accent);
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(212, 255, 0, 0.1);
+        }
+
+        .marquee {
+            white-space: nowrap;
+            overflow: hidden;
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .outline-text {
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+            color: transparent;
+        }
+
+        .scroll-hide::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="grid-pattern">
+    <div class="noise"></div>
+
+    <!-- Tech Nav -->
+    <nav class="fixed top-0 w-full z-50 mix-blend-difference px-6 py-6 flex justify-between items-center">
+        <div class="text-2xl font-extrabold tracking-tighter heading-font flex items-center gap-1">
+            <span>LUMINA</span><span class="accent-text">_</span>
+        </div>
+        <div class="hidden md:flex gap-8 text-[10px] font-bold uppercase tracking-widest italic">
+            <a href="#inventory" class="hover:accent-text transition-colors">/ Inventory</a>
+            <a href="#" class="hover:accent-text transition-colors">/ Benchmarks</a>
+            <a href="#" class="hover:accent-text transition-colors">/ Engineering</a>
+        </div>
+        <div class="flex items-center gap-6">
+            <button class="flex items-center gap-2" onclick="toggleCart()">
+                <span class="text-[10px] font-bold uppercase hidden sm:block">System.Cart</span>
+                <div class="w-10 h-10 accent-bg text-black flex items-center justify-center rounded-sm">
+                    <span id="cart-count" class="font-bold">0</span>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero: Brutalist Specs -->
+    <header class="pt-40 pb-20 px-6 max-w-[1600px] mx-auto grid lg:grid-cols-12 gap-10">
+        <div class="lg:col-span-7">
+            <h1 class="heading-font text-7xl md:text-[140px] leading-[0.8] uppercase font-black">
+                Raw <br><span class="accent-text italic">Performance.</span>
+            </h1>
+            <div class="mt-12 grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="border-l-2 accent-border pl-4">
+                    <span class="text-[10px] uppercase text-gray-500 block">Thermal Ceiling</span>
+                    <span class="text-xl font-bold">120W TDP</span>
+                </div>
+                <div class="border-l-2 accent-border pl-4">
+                    <span class="text-[10px] uppercase text-gray-500 block">Compute Speed</span>
+                    <span class="text-xl font-bold">5.8 GHz</span>
+                </div>
+                <div class="border-l-2 accent-border pl-4">
+                    <span class="text-[10px] uppercase text-gray-500 block">Display Latency</span>
+                    <span class="text-xl font-bold">1.2ms</span>
+                </div>
+            </div>
+            <div class="mt-16 flex flex-wrap gap-4">
+                <button class="accent-bg text-black px-12 py-5 font-black uppercase text-sm rounded-sm hover:scale-105 transition-transform">
+                    Configure System
+                </button>
+                <button class="border border-white/20 px-12 py-5 font-black uppercase text-sm rounded-sm hover:bg-white hover:text-black transition-all">
+                    View Specs
+                </button>
+            </div>
+        </div>
+        <div class="lg:col-span-5 relative flex items-center justify-center">
+            <div class="absolute inset-0 accent-bg opacity-10 blur-[150px] animate-pulse"></div>
+            <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&q=80&w=1200" 
+                 class="w-full h-auto grayscale hover:grayscale-0 transition-all duration-1000 z-10 border border-white/10" 
+                 alt="Hardware">
+            <div class="absolute top-0 right-0 p-4 border border-white/10 text-[10px] font-mono leading-tight bg-black">
+                OS: LUMINA_V2<br>
+                BUILD: 092026<br>
+                STATUS: OPTIMAL
+            </div>
+        </div>
+    </header>
+
+    <!-- Ticker -->
+    <div class="py-10 border-y border-white/10 overflow-hidden bg-white/5">
+        <div class="marquee flex gap-20 items-center">
+            <span class="heading-font text-5xl font-black uppercase italic outline-text">LUMINA ONE</span>
+            <span class="heading-font text-5xl font-black uppercase accent-text italic">READY FOR SHIPMENT</span>
+            <span class="heading-font text-5xl font-black uppercase italic outline-text">TITAN SERIES</span>
+            <span class="heading-font text-5xl font-black uppercase italic outline-text">LUMINA ONE</span>
+            <span class="heading-font text-5xl font-black uppercase accent-text italic">READY FOR SHIPMENT</span>
+            <span class="heading-font text-5xl font-black uppercase italic outline-text">TITAN SERIES</span>
+        </div>
+    </div>
+
+    <!-- Hardware Inventory -->
+    <section id="inventory" class="py-32 px-6 max-w-[1600px] mx-auto">
+        <div class="flex justify-between items-end mb-20">
+            <div>
+                <h2 class="heading-font text-5xl uppercase">Inventory <span class="accent-text italic">01</span></h2>
+                <p class="text-gray-500 mt-2 font-mono">AVAILABLE HARDWARE CONFIGURATIONS</p>
+            </div>
+            <div class="text-right hidden md:block">
+                <span class="text-4xl font-black block">6 MODULAR</span>
+                <span class="text-xs text-gray-500">BASE SYSTEMS</span>
+            </div>
+        </div>
+
+        <div id="product-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1">
+            <!-- Injected by JS -->
+        </div>
+    </section>
+
+    <!-- Spec Focus -->
+    <section class="py-40 border-t border-white/10 bg-zinc-950">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-20">
+            <div>
+                <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&q=80&w=1200" class="w-full h-auto opacity-70">
+            </div>
+            <div class="flex flex-col justify-center">
+                <span class="accent-text text-sm font-bold tracking-widest mb-6 block">02 // THERMAL ENGINEERING</span>
+                <h3 class="heading-font text-5xl font-black uppercase mb-8">Liquid Metal <br>Cooling Array.</h3>
+                <p class="text-gray-400 text-lg leading-relaxed mb-10">
+                    We've replaced standard thermal paste with high-conductivity liquid metal, allowing our chips to boost 15% higher and sustain peak frequencies without throttling.
+                </p>
+                <div class="p-6 border border-white/10 bg-black flex gap-6 items-center">
+                    <div class="text-3xl font-black accent-text">-20°C</div>
+                    <div class="text-xs text-gray-500 font-mono">REDUCTION IN CORE TEMPERATURES COMPARED TO COMPETITORS</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 px-6 border-t border-white/10">
+        <div class="max-w-[1600px] mx-auto grid md:grid-cols-4 gap-12">
+            <div class="col-span-2">
+                <div class="text-3xl font-black heading-font italic mb-6">LUMINA_SYS</div>
+                <p class="text-gray-500 max-w-sm mb-10">High-performance silicon and aerospace-grade chassis. Built for the outliers.</p>
+                <div class="flex gap-4">
+                    <button class="w-12 h-12 border border-white/10 flex items-center justify-center hover:accent-bg hover:text-black transition-all rounded-sm"><i class="fab fa-discord"></i></button>
+                    <button class="w-12 h-12 border border-white/10 flex items-center justify-center hover:accent-bg hover:text-black transition-all rounded-sm"><i class="fab fa-github"></i></button>
+                    <button class="w-12 h-12 border border-white/10 flex items-center justify-center hover:accent-bg hover:text-black transition-all rounded-sm"><i class="fab fa-twitter"></i></button>
+                </div>
+            </div>
+            <div class="space-y-4">
+                <h4 class="font-bold text-xs uppercase accent-text mb-6">Terminal</h4>
+                <a href="#" class="block text-gray-400 hover:text-white transition-colors">Store_Front</a>
+                <a href="#" class="block text-gray-400 hover:text-white transition-colors">Lab_Reports</a>
+                <a href="#" class="block text-gray-400 hover:text-white transition-colors">System_Updates</a>
+            </div>
+            <div class="space-y-4">
+                <h4 class="font-bold text-xs uppercase accent-text mb-6">Legal.txt</h4>
+                <a href="#" class="block text-gray-400 hover:text-white transition-colors">Privacy_Protocol</a>
+                <a href="#" class="block text-gray-400 hover:text-white transition-colors">Term_Agreement</a>
+                <a href="#" class="block text-gray-400 hover:text-white transition-colors">Shipping_Log</a>
+            </div>
+        </div>
+        <div class="max-w-[1600px] mx-auto mt-20 pt-8 border-t border-white/5 text-[9px] font-mono text-gray-600">
+            (C) 2026 LUMINA_CORE // ALL RIGHTS RESERVED // SECURED_TRANS
+        </div>
+    </footer>
+
+    <!-- Side Cart (Neo-Brutal) -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-[400px] bg-black border-l border-white/10 z-[100] translate-x-full transition-transform duration-500 ease-in-out flex flex-col">
+        <div class="p-8 border-b border-white/10 flex justify-between items-center bg-zinc-900">
+            <h3 class="heading-font text-xl font-black uppercase">Core_Cart</h3>
+            <button onclick="toggleCart()" class="text-xs font-bold uppercase accent-text">/ Close</button>
+        </div>
+        <div id="cart-items" class="flex-grow overflow-y-auto p-6 space-y-4 scroll-hide">
+            <div id="empty-cart-msg" class="h-full flex flex-col items-center justify-center opacity-30 italic">
+                <span>[EMPTY_ARRAY]</span>
+            </div>
+        </div>
+        <div class="p-8 border-t border-white/10 bg-zinc-900">
+            <div class="flex justify-between mb-8">
+                <span class="font-mono text-xs uppercase">Total_Value</span>
+                <span id="cart-total" class="text-2xl font-black accent-text">$0.00</span>
+            </div>
+            <button onclick="checkout()" class="w-full accent-bg text-black py-5 font-black uppercase text-xs hover:invert transition-all">
+                Execute_Order
+            </button>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="fixed bottom-10 left-10 border border-white/20 bg-black text-white px-8 py-4 text-[10px] font-bold uppercase tracking-widest opacity-0 -translate-x-10 transition-all duration-300 z-[200]">
+        Hardware added to system
+    </div>
+
+    <script>
+        const products = [
+            { id: 1, name: "ALPHA GEN_1", category: "Core", price: 1800, specs: "Core i7 / 14-inch", image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=800" },
+            { id: 2, name: "TITAN X_2", category: "Heavy", price: 3200, specs: "RTX 4090 / 16-inch", image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&q=80&w=800" },
+            { id: 3, name: "STEALTH 03", category: "Mobile", price: 1450, specs: "Lightweight Magnesium", image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=800" },
+            { id: 4, name: "OMNIPOTENT", category: "Work", price: 4500, specs: "128GB RAM / ECC", image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&q=80&w=800" },
+            { id: 5, name: "ZENITH V4", category: "Creative", price: 2400, specs: "OLED 4K / Haptic", image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&q=80&w=800" },
+            { id: 6, name: "AERO S_9", category: "Concept", price: 1950, specs: "Fanless Architecture", image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&q=80&w=800" }
+        ];
+
+        let cart = [];
+
+        function renderProducts() {
+            const container = document.getElementById('product-list');
+            container.innerHTML = products.map(p => `
+                <div class="neo-brutal-card p-8 bg-zinc-950/50 flex flex-col group">
+                    <div class="relative aspect-square mb-8 overflow-hidden grayscale group-hover:grayscale-0 transition-all">
+                        <img src="${p.image}" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 border border-white/5"></div>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-start">
+                            <h3 class="heading-font text-2xl font-black uppercase">${p.name}</h3>
+                            <span class="accent-text font-bold">$${p.price.toLocaleString()}</span>
+                        </div>
+                        <p class="text-[10px] uppercase text-gray-500 mt-2 font-mono">${p.specs}</p>
+                    </div>
+                    <button onclick="addToCart(${p.id})" class="mt-8 border border-white/10 py-4 font-black text-xs uppercase hover:accent-bg hover:text-black transition-all">
+                        Add_To_System
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            updateCartUI();
+            showNotification();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const list = document.getElementById('cart-items');
+            const total = document.getElementById('cart-total');
+            const empty = document.getElementById('empty-cart-msg');
+
+            if (cart.length === 0) {
+                empty.style.display = 'flex';
+                list.innerHTML = '';
+            } else {
+                empty.style.display = 'none';
+                list.innerHTML = cart.map((item, index) => `
+                    <div class="p-4 border border-white/10 bg-zinc-900 flex gap-4">
+                        <img src="${item.image}" class="w-16 h-16 object-cover grayscale">
+                        <div class="flex-grow">
+                            <div class="flex justify-between">
+                                <span class="font-bold text-xs uppercase">${item.name}</span>
+                                <button onclick="removeFromCart(${index})" class="text-red-500 text-[10px] font-black underline">DEL</button>
+                            </div>
+                            <span class="accent-text font-bold text-sm">$${item.price.toLocaleString()}</span>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            total.innerText = `$${cart.reduce((s, i) => s + i.price, 0).toLocaleString()}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            document.getElementById('cart-sidebar').classList.toggle('translate-x-full');
+        }
+
+        function showNotification() {
+            const toast = document.getElementById('notification');
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateX(0)';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(-2.5rem)';
+            }, 2000);
+        }
+
+        function checkout() {
+            if (cart.length === 0) return;
+            alert("SYSTEM: Order sequence initialized. Hardware reserved.");
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+
+        window.onload = renderProducts;
+    </script>
+</body>
+</html>

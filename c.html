@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumina | Pure Performance</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        h1, h2, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .nav-blur {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+        }
+
+        .product-card {
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .img-zoom {
+            transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .product-card:hover .img-zoom {
+            transform: scale(1.05);
+        }
+
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .btn-minimal {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-minimal::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: currentColor;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+
+        .btn-minimal:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        @keyframes reveal {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .reveal { animation: reveal 1s ease-out forwards; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Minimal Navigation -->
+    <nav class="fixed top-0 w-full z-50 nav-blur px-8 md:px-16 py-6 flex justify-between items-center border-b border-gray-100">
+        <div class="text-xl font-bold tracking-widest flex items-center gap-2">
+            <span class="bg-black text-white px-2 py-0.5">L</span>
+            <span>LUMINA</span>
+        </div>
+        <div class="hidden md:flex gap-12 text-[11px] font-bold uppercase tracking-[0.2em] text-gray-500">
+            <a href="#featured" class="hover:text-black transition-colors">Collection</a>
+            <a href="#philosophy" class="hover:text-black transition-colors">Philosophy</a>
+            <a href="#" class="hover:text-black transition-colors">Journal</a>
+            <a href="#" class="hover:text-black transition-colors">Bespoke</a>
+        </div>
+        <div class="flex items-center gap-8">
+            <button class="relative group" onclick="toggleCart()">
+                <span class="text-[11px] font-bold uppercase tracking-widest mr-2 hidden sm:inline-block">Cart</span>
+                <i class="fas fa-shopping-bag text-lg"></i>
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-black text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+            </button>
+            <i class="fas fa-bars md:hidden text-lg"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 px-8 md:px-16 max-w-[1400px] mx-auto min-h-[90vh] flex flex-col justify-center">
+        <div class="reveal">
+            <span class="text-xs font-bold tracking-[0.4em] uppercase text-gray-400 mb-6 block">Winter 2026 Release</span>
+            <h1 class="text-6xl md:text-[120px] leading-[0.9] font-bold mb-10 tracking-tighter">
+                Elegance in <br><span class="serif italic font-normal text-gray-400">Engineering.</span>
+            </h1>
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-12">
+                <p class="text-gray-500 text-lg max-w-xl leading-relaxed">
+                    We believe tools should be as beautiful as the work they create. Introducing a new standard of performance wrapped in aerospace-grade materials.
+                </p>
+                <div class="flex gap-8">
+                    <a href="#featured" class="bg-black text-white px-10 py-5 rounded-full text-sm font-bold hover:bg-gray-800 transition-all">
+                        View Collection
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-24 relative h-[500px] md:h-[700px] rounded-[40px] overflow-hidden reveal" style="animation-delay: 0.2s">
+            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=2000" 
+                 alt="Hero" 
+                 class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-black/5"></div>
+        </div>
+    </header>
+
+    <!-- Philosophy -->
+    <section id="philosophy" class="py-32 px-8 md:px-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-24 items-center">
+            <h2 class="text-5xl font-bold leading-tight">The intersection of <br>form and absolute <br><span class="serif italic font-normal">function.</span></h2>
+            <div class="space-y-8">
+                <p class="text-gray-600 text-lg">Every curve, every port, and every pixel is considered. Our laptops aren't just assembled; they are sculpted from solid blocks of aluminum to ensure structural integrity and thermal perfection.</p>
+                <button class="btn-minimal text-sm font-bold uppercase tracking-widest">Learn about our craft</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section id="featured" class="py-32 px-8 md:px-16 max-w-[1400px] mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-baseline mb-20 gap-6">
+            <h2 class="text-4xl font-bold">Featured Models</h2>
+            <div class="flex gap-8 text-[11px] font-bold uppercase tracking-widest text-gray-400">
+                <button class="text-black border-b border-black">All</button>
+                <button class="hover:text-black">Studio</button>
+                <button class="hover:text-black">Motion</button>
+                <button class="hover:text-black">Air</button>
+            </div>
+        </div>
+
+        <div id="product-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+            <!-- Products injected via JS -->
+        </div>
+    </section>
+
+    <!-- Full Width Callout -->
+    <section class="py-40 px-8 text-center bg-black text-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-5xl md:text-7xl font-bold mb-10">Unrivaled Support.</h2>
+            <p class="text-gray-400 text-xl mb-12">Every Lumina comes with a 3-year Concierge Warranty. We don't just fix problems; we ensure your workflow never stops.</p>
+            <button class="border border-white/20 hover:bg-white hover:text-black px-12 py-5 rounded-full transition-all uppercase text-xs font-bold tracking-widest">
+                Explore Support Plans
+            </button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-32 px-8 md:px-16 border-t border-gray-100">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-20">
+            <div class="col-span-1 md:col-span-2">
+                <div class="text-xl font-bold tracking-widest mb-8">LUMINA</div>
+                <p class="text-gray-400 max-w-xs leading-relaxed mb-10">Creating the world's most sophisticated personal computers for the next generation of industry leaders.</p>
+                <div class="flex gap-8 text-gray-400">
+                    <i class="fab fa-instagram hover:text-black cursor-pointer"></i>
+                    <i class="fab fa-vimeo-v hover:text-black cursor-pointer"></i>
+                    <i class="fab fa-linkedin-in hover:text-black cursor-pointer"></i>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-[11px] font-bold uppercase tracking-[0.2em] mb-8">Navigation</h4>
+                <ul class="text-sm text-gray-500 space-y-4">
+                    <li><a href="#" class="hover:text-black transition-colors">The Store</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">Lumina Journal</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">Sustainability</a></li>
+                    <li><a href="#" class="hover:text-black transition-colors">Careers</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-[11px] font-bold uppercase tracking-[0.2em] mb-8">Contact</h4>
+                <ul class="text-sm text-gray-500 space-y-4">
+                    <li>hello@lumina.design</li>
+                    <li>Flagship: New York, NY</li>
+                    <li>+1 (800) LUM-INA</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-[1400px] mx-auto mt-32 pt-10 border-t border-gray-100 flex flex-col md:flex-row justify-between text-[10px] font-bold uppercase tracking-widest text-gray-400 gap-4">
+            <p>&copy; 2026 Lumina Design House.</p>
+            <div class="flex gap-8">
+                <a href="#">Privacy</a>
+                <a href="#">Accessibility</a>
+                <a href="#">Legal</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Side Cart -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-[500px] bg-white z-[100] translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col shadow-[-50px_0_100px_rgba(0,0,0,0.05)]">
+        <div class="p-10 flex justify-between items-center border-b border-gray-100">
+            <h3 class="text-xl font-bold tracking-tight">Shopping Bag</h3>
+            <button onclick="toggleCart()" class="text-xs font-bold uppercase tracking-widest hover:text-gray-400">Close</button>
+        </div>
+        <div id="cart-items" class="flex-grow overflow-y-auto p-10 space-y-10 scroll-hide">
+            <div id="empty-cart-msg" class="h-full flex flex-col items-center justify-center text-center py-20">
+                <p class="text-gray-400 serif italic text-xl">Your bag is currently empty.</p>
+                <button onclick="toggleCart()" class="mt-6 text-xs font-bold uppercase tracking-widest border-b border-black">Shop Models</button>
+            </div>
+        </div>
+        <div class="p-10 border-t border-gray-100 bg-gray-50">
+            <div class="flex justify-between items-end mb-10">
+                <span class="text-gray-400 text-xs font-bold uppercase tracking-widest">Estimated Total</span>
+                <span id="cart-total" class="text-3xl font-bold tracking-tighter">$0.00</span>
+            </div>
+            <button onclick="checkout()" class="w-full bg-black text-white py-6 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-gray-800 transition-all">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
+
+    <!-- Minimal Notification -->
+    <div id="notification" class="fixed bottom-10 right-10 bg-black text-white px-8 py-4 rounded-full text-[10px] font-bold uppercase tracking-widest opacity-0 translate-y-10 transition-all duration-500 z-[200]">
+        Added to Bag
+    </div>
+
+    <script>
+        const products = [
+            {
+                id: 1,
+                name: "Lumina One",
+                category: "Motion",
+                price: 1800,
+                specs: "Carbon Grey | 14-inch Display",
+                image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                id: 2,
+                name: "Studio Max",
+                category: "Professional",
+                price: 3200,
+                specs: "Silver | 16-inch Liquid Retina",
+                image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                id: 3,
+                name: "Air Stealth",
+                category: "Ultraportable",
+                price: 1450,
+                specs: "Midnight | 2.2 lbs Weight",
+                image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                id: 4,
+                name: "Titan Workstation",
+                category: "Compute",
+                price: 4500,
+                specs: "Jet Black | 128GB Unified Memory",
+                image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                id: 5,
+                name: "Zenith Pro",
+                category: "Creative",
+                price: 2400,
+                specs: "Graphite | Haptic Keyboard",
+                image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                id: 6,
+                name: "Aero Edition",
+                category: "Minimalist",
+                price: 1950,
+                specs: "Frost White | Sustainable Build",
+                image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&q=80&w=800"
+            }
+        ];
+
+        let cart = [];
+
+        function renderProducts() {
+            const container = document.getElementById('product-list');
+            container.innerHTML = products.map(p => `
+                <div class="product-card flex flex-col group">
+                    <div class="relative aspect-[4/5] bg-gray-100 rounded-[32px] overflow-hidden mb-8">
+                        <img src="${p.image}" alt="${p.name}" class="img-zoom w-full h-full object-cover grayscale-[0.5] group-hover:grayscale-0">
+                        <button onclick="addToCart(${p.id})" class="absolute bottom-6 right-6 w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-xl translate-y-20 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hover:bg-black hover:text-white">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="text-[10px] font-bold uppercase tracking-widest text-gray-400 block mb-2">${p.category}</span>
+                            <h3 class="text-xl font-bold tracking-tight">${p.name}</h3>
+                            <p class="text-sm text-gray-500 mt-2">${p.specs}</p>
+                        </div>
+                        <span class="text-lg font-bold tracking-tighter">$${p.price.toLocaleString()}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            updateCartUI();
+            showNotification();
+        }
+
+        function updateCartUI() {
+            const count = document.getElementById('cart-count');
+            const itemsList = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+            const emptyMsg = document.getElementById('empty-cart-msg');
+
+            count.innerText = cart.length;
+            
+            if (cart.length === 0) {
+                emptyMsg.style.display = 'flex';
+                itemsList.innerHTML = '';
+            } else {
+                emptyMsg.style.display = 'none';
+                itemsList.innerHTML = cart.map((item, index) => `
+                    <div class="flex gap-8 group">
+                        <div class="w-24 h-32 bg-gray-100 rounded-2xl overflow-hidden shrink-0">
+                            <img src="${item.image}" class="w-full h-full object-cover grayscale">
+                        </div>
+                        <div class="flex flex-col justify-between py-1 flex-grow">
+                            <div>
+                                <div class="flex justify-between items-start">
+                                    <h4 class="font-bold text-sm tracking-tight">${item.name}</h4>
+                                    <button onclick="removeFromCart(${index})" class="text-[10px] font-bold uppercase tracking-widest text-gray-300 hover:text-black transition-colors">Remove</button>
+                                </div>
+                                <p class="text-[10px] text-gray-400 uppercase tracking-widest mt-2">${item.specs}</p>
+                            </div>
+                            <p class="font-bold text-sm">$${item.price.toLocaleString()}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            totalEl.innerText = `$${total.toLocaleString()}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            sidebar.classList.toggle('translate-x-full');
+        }
+
+        function showNotification() {
+            const toast = document.getElementById('notification');
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateY(0)';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateY(2.5rem)';
+            }, 2500);
+        }
+
+        function checkout() {
+            if (cart.length === 0) return;
+            alert("Thank you for choosing Lumina. Your order is being processed.");
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+
+        window.onload = renderProducts;
+    </script>
+</body>
+</html>

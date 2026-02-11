@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumina | Premium Laptops</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .glass {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.08);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .feature-card:hover {
+            border-color: #38bdf8;
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+
+        .glow-effect {
+            box-shadow: 0 0 50px -10px rgba(56, 189, 248, 0.3);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass px-6 md:px-12 py-4 flex justify-between items-center">
+        <div class="text-2xl font-bold tracking-tighter flex items-center gap-2">
+            <i class="fas fa-laptop-code text-blue-400"></i>
+            <span>LUMINA</span>
+        </div>
+        <div class="hidden lg:flex gap-10 text-xs font-bold uppercase tracking-widest text-slate-400">
+            <a href="#featured" class="hover:text-white transition-colors">Featured</a>
+            <a href="#features" class="hover:text-white transition-colors">Performance</a>
+            <a href="#testimonials" class="hover:text-white transition-colors">Reviews</a>
+            <a href="#" class="hover:text-white transition-colors">Support</a>
+        </div>
+        <div class="flex items-center gap-6">
+            <button class="relative group" onclick="toggleCart()">
+                <i class="fas fa-shopping-bag text-xl group-hover:text-blue-400 transition-colors"></i>
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-blue-600 text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+            </button>
+            <button class="hidden md:block bg-white text-black px-6 py-2 rounded-full text-sm font-bold hover:bg-blue-400 hover:text-white transition-all">
+                Login
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-40 pb-20 px-6 max-w-7xl mx-auto flex flex-col items-center text-center">
+        <div class="absolute top-20 -z-10 w-96 h-96 bg-blue-600/20 blur-[120px] rounded-full"></div>
+        <span class="inline-block border border-blue-500/30 px-4 py-1 rounded-full text-blue-400 font-semibold tracking-widest uppercase text-[10px] mb-6">
+            Future of Computing is here
+        </span>
+        <h1 class="text-6xl md:text-8xl font-bold leading-none tracking-tight">
+            Perform at the <br><span class="gradient-text italic">Speed of Thought.</span>
+        </h1>
+        <p class="mt-8 text-slate-400 text-lg max-w-2xl leading-relaxed">
+            From architecture to high-end gaming, Lumina provides the hardware you need to break boundaries. Experience liquid-smooth multitasking with the world's most powerful chips.
+        </p>
+        <div class="mt-12 flex flex-col sm:flex-row gap-4">
+            <a href="#featured" class="bg-blue-600 hover:bg-blue-500 px-10 py-4 rounded-full font-bold transition-all shadow-lg shadow-blue-600/20">
+                Explore Collection
+            </a>
+            <button class="glass px-10 py-4 rounded-full font-bold hover:bg-slate-800 transition-all">
+                Watch Keynote
+            </button>
+        </div>
+        
+        <div class="mt-20 w-full relative">
+            <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&q=80&w=1600" 
+                 alt="Main Laptop Hero" 
+                 class="rounded-3xl shadow-2xl glow-effect animate-float border border-white/5">
+        </div>
+    </header>
+
+    <!-- Brand Stats Section -->
+    <section class="py-24 border-y border-white/5 bg-slate-900/30">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12 text-center">
+            <div>
+                <p class="text-4xl font-bold text-white">4.9/5</p>
+                <p class="text-slate-500 text-sm mt-2">Customer Satisfaction</p>
+            </div>
+            <div>
+                <p class="text-4xl font-bold text-white">2.4ms</p>
+                <p class="text-slate-500 text-sm mt-2">Average Latency</p>
+            </div>
+            <div>
+                <p class="text-4xl font-bold text-white">100k+</p>
+                <p class="text-slate-500 text-sm mt-2">Laptops Sold</p>
+            </div>
+            <div>
+                <p class="text-4xl font-bold text-white">24/7</p>
+                <p class="text-slate-500 text-sm mt-2">Expert Support</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-32 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+            <h2 class="text-4xl font-bold">Why Choose Lumina?</h2>
+            <p class="text-slate-400 mt-4">Hardware built for the next generation of creators.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="feature-card p-10 rounded-3xl border border-white/5 transition-all">
+                <div class="w-14 h-14 bg-blue-600/20 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-microchip text-blue-400 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Neural Processing</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Integrated AI engines that learn your workflow and optimize battery life dynamically.</p>
+            </div>
+            <div class="feature-card p-10 rounded-3xl border border-white/5 transition-all">
+                <div class="w-14 h-14 bg-purple-600/20 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-tachometer-alt text-purple-400 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Hyper-Cooling</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Vapor chamber technology that keeps your machine silent even under heavy 4K rendering.</p>
+            </div>
+            <div class="feature-card p-10 rounded-3xl border border-white/5 transition-all">
+                <div class="w-14 h-14 bg-emerald-600/20 rounded-2xl flex items-center justify-center mb-6">
+                    <i class="fas fa-battery-full text-emerald-400 text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">24-Hour Life</h3>
+                <p class="text-slate-400 text-sm leading-relaxed">Stay unplugged all day with silicon-carbon battery technology designed for mobility.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section id="featured" class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+            <div>
+                <span class="text-blue-400 text-sm font-bold tracking-widest uppercase">The Lineup</span>
+                <h2 class="text-4xl font-bold mt-2">Precision Instruments</h2>
+            </div>
+            <div class="flex gap-4 text-xs font-bold text-slate-500">
+                <button class="text-white border-b-2 border-blue-500 pb-1">All Models</button>
+                <button class="hover:text-white pb-1">Gaming</button>
+                <button class="hover:text-white pb-1">Creative</button>
+            </div>
+        </div>
+
+        <div id="product-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Dynamic Injection -->
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="py-32 px-6 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-center text-3xl font-bold mb-20 italic">"Lumina didn't just build a laptop, they built a productivity superpower."</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="flex gap-6 items-start">
+                    <img src="https://i.pravatar.cc/150?u=1" class="w-16 h-16 rounded-full grayscale">
+                    <div>
+                        <p class="text-slate-300 italic mb-4">"The Zenith Pro changed how I handle video editing on the road. It handles RAW footage like a desktop workstation."</p>
+                        <p class="font-bold">Marcus Chen — <span class="text-blue-400 font-normal">Digital Nomad</span></p>
+                    </div>
+                </div>
+                <div class="flex gap-6 items-start">
+                    <img src="https://i.pravatar.cc/150?u=2" class="w-16 h-16 rounded-full grayscale">
+                    <div>
+                        <p class="text-slate-300 italic mb-4">"Battery life that actually lasts a full flight from London to Tokyo. Lumina is in a class of its own."</p>
+                        <p class="font-bold">Sarah Jenkins — <span class="text-blue-400 font-normal">UX Designer</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-2">
+                <div class="text-2xl font-bold tracking-tighter flex items-center gap-2 mb-6">
+                    <i class="fas fa-laptop-code text-blue-400"></i>
+                    <span>LUMINA</span>
+                </div>
+                <p class="text-slate-400 max-w-sm mb-8">Premium computing for those who demand excellence. Global shipping, lifetime tech support, and zero compromises.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6">Shop</h4>
+                <ul class="text-slate-400 space-y-4 text-sm">
+                    <li><a href="#" class="hover:text-blue-400">All Laptops</a></li>
+                    <li><a href="#" class="hover:text-blue-400">Accessories</a></li>
+                    <li><a href="#" class="hover:text-blue-400">Refurbished</a></li>
+                    <li><a href="#" class="hover:text-blue-400">Student Discounts</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-6">Support</h4>
+                <ul class="text-slate-400 space-y-4 text-sm">
+                    <li><a href="#" class="hover:text-blue-400">Help Center</a></li>
+                    <li><a href="#" class="hover:text-blue-400">Warranty</a></li>
+                    <li><a href="#" class="hover:text-blue-400">Contact Us</a></li>
+                    <li><a href="#" class="hover:text-blue-400">Repair Status</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-white/5 text-slate-500 text-xs flex flex-col md:flex-row justify-between gap-4">
+            <p>&copy; 2026 Lumina Technologies Inc. All rights reserved.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-white">Privacy Policy</a>
+                <a href="#" class="hover:text-white">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-[450px] glass z-[100] translate-x-full transition-transform duration-500 p-10 flex flex-col shadow-2xl">
+        <div class="flex justify-between items-center mb-10">
+            <div>
+                <h3 class="text-3xl font-bold">Your Bag</h3>
+                <p id="cart-summary-txt" class="text-slate-400 text-sm mt-1">0 items added</p>
+            </div>
+            <button onclick="toggleCart()" class="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="cart-items" class="flex-grow overflow-y-auto space-y-6 scroll-hide">
+            <div id="empty-cart-msg" class="h-full flex flex-col items-center justify-center text-center opacity-50">
+                <i class="fas fa-shopping-basket text-6xl mb-4"></i>
+                <p>Start your performance journey.</p>
+            </div>
+        </div>
+        <div class="mt-8 pt-8 border-t border-white/10">
+            <div class="flex justify-between text-2xl font-bold mb-8">
+                <span>Subtotal</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <button onclick="checkout()" class="w-full bg-blue-600 hover:bg-blue-500 py-5 rounded-2xl font-bold transition-all text-lg shadow-xl shadow-blue-600/20">
+                Complete Purchase
+            </button>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-white text-black font-bold px-8 py-4 rounded-full shadow-2xl opacity-0 transition-all transform translate-y-4 pointer-events-none z-[200]">
+        Added to collection
+    </div>
+
+    <script>
+        const products = [
+            {
+                id: 1,
+                name: "Zephyr Ultrabook S1",
+                category: "Professional",
+                price: 1499.00,
+                specs: "Core i7-14th Gen | 32GB RAM",
+                image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                id: 2,
+                name: "Titan Gaming X2",
+                category: "Gaming",
+                price: 2899.00,
+                specs: "RTX 4090 | 64GB RAM | 2TB",
+                image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                id: 3,
+                name: "Stellar Air Pro",
+                category: "Ultrabook",
+                price: 1199.00,
+                specs: "M3 Max Chip | 18GB Unified",
+                image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                id: 4,
+                name: "Creator Studio 16",
+                category: "Workstation",
+                price: 3499.00,
+                specs: "Color Accurate 4K OLED | 4TB",
+                image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                id: 5,
+                name: "Nero Stealth Black",
+                category: "Professional",
+                price: 1799.00,
+                specs: "Ryzen 9 | Liquid Metal Cooling",
+                image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                id: 6,
+                name: "Edge Pro 14",
+                category: "Creative",
+                price: 2199.00,
+                specs: "Touch Panel | Haptic Trackpad",
+                image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&q=80&w=800"
+            }
+        ];
+
+        let cart = [];
+
+        function renderProducts() {
+            const container = document.getElementById('product-list');
+            container.innerHTML = products.map(p => `
+                <div class="product-card glass rounded-3xl overflow-hidden group cursor-pointer border border-white/5">
+                    <div class="relative h-72 overflow-hidden bg-slate-800">
+                        <img src="${p.image}" alt="${p.name}" class="product-image w-full h-full object-cover transition-transform duration-1000 opacity-90 group-hover:opacity-100">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent"></div>
+                        <span class="absolute top-6 left-6 glass backdrop-blur-md text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-widest text-blue-400 border border-blue-400/20">${p.category}</span>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold group-hover:text-blue-400 transition-colors">${p.name}</h3>
+                                <p class="text-xs text-slate-500 mt-2 font-medium tracking-wide uppercase">${p.specs}</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between mt-10">
+                            <span class="text-2xl font-bold">$${p.price.toLocaleString()}</span>
+                            <button onclick="addToCart(${p.id})" class="bg-white text-black h-12 w-12 rounded-2xl flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all transform active:scale-90">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            updateCartUI();
+            showNotification();
+        }
+
+        function updateCartUI() {
+            const count = document.getElementById('cart-count');
+            const itemsList = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+            const emptyMsg = document.getElementById('empty-cart-msg');
+            const summaryTxt = document.getElementById('cart-summary-txt');
+
+            count.innerText = cart.length;
+            summaryTxt.innerText = `${cart.length} item${cart.length !== 1 ? 's' : ''} added`;
+            
+            if (cart.length === 0) {
+                emptyMsg.style.display = 'flex';
+                itemsList.innerHTML = '';
+            } else {
+                emptyMsg.style.display = 'none';
+                itemsList.innerHTML = cart.map((item, index) => `
+                    <div class="flex gap-6 bg-white/5 p-4 rounded-2xl border border-white/5 group relative">
+                        <img src="${item.image}" class="w-24 h-24 object-cover rounded-xl shadow-lg">
+                        <div class="flex-grow py-1">
+                            <h4 class="font-bold text-sm mb-1">${item.name}</h4>
+                            <p class="text-[10px] text-slate-500 uppercase tracking-tighter mb-2">${item.specs}</p>
+                            <p class="text-blue-400 font-bold">$${item.price.toLocaleString()}</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="absolute top-4 right-4 text-slate-500 hover:text-red-400 transition-colors">
+                            <i class="fas fa-trash-alt text-xs"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            totalEl.innerText = `$${total.toLocaleString()}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            sidebar.classList.toggle('translate-x-full');
+        }
+
+        function showNotification() {
+            const toast = document.getElementById('notification');
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateX(-50%) translateY(0)';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(-50%) translateY(1rem)';
+            }, 2000);
+        }
+
+        function checkout() {
+            if (cart.length === 0) return;
+            alert("Order Confirmed! Your Lumina experience begins soon.");
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+
+        window.onload = renderProducts;
+    </script>
+</body>
+</html>

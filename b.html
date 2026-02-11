@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumina | Premium Laptops</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cart-badge {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass px-6 py-4 flex justify-between items-center">
+        <div class="text-2xl font-bold tracking-tighter flex items-center gap-2">
+            <i class="fas fa-laptop-code text-blue-400"></i>
+            <span>LUMINA</span>
+        </div>
+        <div class="hidden md:flex gap-8 text-sm font-medium uppercase tracking-widest text-slate-400">
+            <a href="#" class="hover:text-white transition-colors">Gaming</a>
+            <a href="#" class="hover:text-white transition-colors">Workstation</a>
+            <a href="#" class="hover:text-white transition-colors">Ultrabooks</a>
+            <a href="#" class="hover:text-white transition-colors">Deals</a>
+        </div>
+        <div class="flex items-center gap-6">
+            <button class="relative" onclick="toggleCart()">
+                <i class="fas fa-shopping-cart text-xl hover:text-blue-400 transition-colors"></i>
+                <span id="cart-count" class="absolute -top-2 -right-2 bg-blue-600 text-[10px] w-4 h-4 rounded-full flex items-center justify-center cart-badge">0</span>
+            </button>
+            <i class="fas fa-search text-xl cursor-pointer hover:text-blue-400"></i>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 px-6 max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+        <div>
+            <span class="text-blue-400 font-semibold tracking-widest uppercase text-sm">New Arrival: Zenith Pro</span>
+            <h1 class="text-5xl md:text-7xl font-bold mt-4 leading-tight">
+                Engineered for <br><span class="gradient-text">Absolute Power.</span>
+            </h1>
+            <p class="mt-6 text-slate-400 text-lg max-w-lg">
+                Experience the next generation of computing with our M3 Max and RTX 4090 series. Speed, redefined.
+            </p>
+            <div class="mt-10 flex gap-4">
+                <button class="bg-blue-600 hover:bg-blue-500 px-8 py-4 rounded-full font-bold transition-all transform hover:translate-y-[-2px]">
+                    Shop Now
+                </button>
+                <button class="border border-slate-700 hover:bg-slate-800 px-8 py-4 rounded-full font-bold transition-all">
+                    Learn More
+                </button>
+            </div>
+        </div>
+        <div class="relative group">
+            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=1000" 
+                 alt="MacBook Pro" 
+                 class="rounded-2xl shadow-2xl shadow-blue-900/20 transform group-hover:rotate-1 transition-transform duration-500">
+            <div class="absolute -bottom-6 -left-6 glass p-6 rounded-xl hidden md:block animate-bounce">
+                <p class="text-sm font-bold">20% Faster</p>
+                <p class="text-xs text-slate-400">Than previous gen</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Grid -->
+    <section class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <h2 class="text-3xl font-bold">Featured Laptops</h2>
+                <div class="h-1 w-20 bg-blue-500 mt-2 rounded-full"></div>
+            </div>
+            <div class="flex gap-2">
+                <button class="p-2 border border-slate-700 rounded-lg hover:bg-slate-800"><i class="fas fa-chevron-left"></i></button>
+                <button class="p-2 border border-slate-700 rounded-lg hover:bg-slate-800"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <div id="product-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Products will be injected here -->
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-96 glass z-[100] translate-x-full transition-transform duration-300 p-8 flex flex-col">
+        <div class="flex justify-between items-center mb-8">
+            <h3 class="text-2xl font-bold">Your Cart</h3>
+            <button onclick="toggleCart()" class="text-slate-400 hover:text-white text-xl">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="cart-items" class="flex-grow overflow-y-auto space-y-4 scroll-hide">
+            <!-- Cart items injected here -->
+            <p id="empty-cart-msg" class="text-slate-500 text-center mt-20">Your cart is empty.</p>
+        </div>
+        <div class="mt-8 pt-8 border-t border-slate-700">
+            <div class="flex justify-between text-xl font-bold mb-6">
+                <span>Total</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <button onclick="checkout()" class="w-full bg-blue-600 hover:bg-blue-500 py-4 rounded-xl font-bold transition-all">
+                Checkout Now
+            </button>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-6 py-3 rounded-full shadow-lg opacity-0 transition-opacity pointer-events-none z-[200]">
+        Item added to cart!
+    </div>
+
+    <script>
+        const products = [
+            {
+                id: 1,
+                name: "Zephyr Ultrabook S1",
+                category: "Professional",
+                price: 1299.00,
+                specs: "Core i7 | 16GB | 512GB SSD",
+                image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                id: 2,
+                name: "Titan Gaming X2",
+                category: "Gaming",
+                price: 2499.00,
+                specs: "RTX 4080 | 32GB | 1TB SSD",
+                image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                id: 3,
+                name: "Stellar Air Pro",
+                category: "Ultrabook",
+                price: 999.00,
+                specs: "M2 Chip | 8GB | 256GB SSD",
+                image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                id: 4,
+                name: "Creator Studio 16",
+                category: "Workstation",
+                price: 3199.00,
+                specs: "Xeon | 64GB | 2TB SSD",
+                image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                id: 5,
+                name: "Nero Stealth",
+                category: "Professional",
+                price: 1599.00,
+                specs: "Ryzen 9 | 16GB | 1TB SSD",
+                image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=800"
+            },
+            {
+                id: 6,
+                name: "Compact Go 13",
+                category: "Student",
+                price: 699.00,
+                specs: "Core i5 | 8GB | 256GB SSD",
+                image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&q=80&w=800"
+            }
+        ];
+
+        let cart = [];
+
+        function renderProducts() {
+            const container = document.getElementById('product-list');
+            container.innerHTML = products.map(p => `
+                <div class="product-card glass rounded-2xl overflow-hidden group cursor-pointer">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="${p.image}" alt="${p.name}" class="product-image w-full h-full object-cover transition-transform duration-700">
+                        <div class="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <span class="absolute top-4 left-4 bg-blue-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">${p.category}</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-xl font-bold group-hover:text-blue-400 transition-colors">${p.name}</h3>
+                                <p class="text-sm text-slate-500 mt-1">${p.specs}</p>
+                            </div>
+                            <span class="text-xl font-bold">$${p.price.toLocaleString()}</span>
+                        </div>
+                        <button onclick="addToCart(${p.id})" class="mt-6 w-full border border-blue-500/50 hover:bg-blue-600 text-blue-400 hover:text-white py-3 rounded-xl font-semibold transition-all flex items-center justify-center gap-2">
+                            <i class="fas fa-cart-plus"></i> Add to Cart
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            updateCartUI();
+            showNotification();
+        }
+
+        function updateCartUI() {
+            const count = document.getElementById('cart-count');
+            const itemsList = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+            const emptyMsg = document.getElementById('empty-cart-msg');
+
+            count.innerText = cart.length;
+            
+            if (cart.length === 0) {
+                emptyMsg.style.display = 'block';
+                itemsList.innerHTML = '';
+            } else {
+                emptyMsg.style.display = 'none';
+                itemsList.innerHTML = cart.map((item, index) => `
+                    <div class="flex gap-4 bg-slate-800/50 p-3 rounded-lg border border-slate-700">
+                        <img src="${item.image}" class="w-20 h-20 object-cover rounded-md">
+                        <div class="flex-grow">
+                            <h4 class="font-bold text-sm">${item.name}</h4>
+                            <p class="text-blue-400 font-bold">$${item.price.toLocaleString()}</p>
+                            <button onclick="removeFromCart(${index})" class="text-xs text-red-400 mt-2 hover:underline">Remove</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            totalEl.innerText = `$${total.toLocaleString()}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            sidebar.classList.toggle('translate-x-full');
+        }
+
+        function showNotification() {
+            const toast = document.getElementById('notification');
+            toast.style.opacity = '1';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+            }, 2000);
+        }
+
+        function checkout() {
+            if (cart.length === 0) return;
+            alert("This is a demo! Your order for " + cart.length + " items has been 'processed'.");
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+
+        // Initialize
+        window.onload = renderProducts;
+    </script>
+</body>
+</html>

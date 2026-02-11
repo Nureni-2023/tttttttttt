@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUMINA | Intelligence Redefined 2028</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bento:wght@300;400;700&family=Plus+Jakarta+Sans:wght@200;400;600;800&display=swap');
+        
+        :root {
+            --lumina-glow: rgba(147, 197, 253, 0.3);
+            --nebula-accent: #8b5cf6;
+        }
+
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #02040a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* 2028 Mesh Gradients */
+        .mesh-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(59, 130, 246, 0.1) 0px, transparent 50%);
+            z-index: -1;
+        }
+
+        /* Glassmorphism 2.0 */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 2rem;
+        }
+
+        .nav-island {
+            background: rgba(10, 10, 15, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+        }
+
+        .hero-title {
+            background: linear-gradient(to bottom, #fff 40%, rgba(255,255,255,0.4));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glow-btn {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glow-btn:hover {
+            box-shadow: 0 0 50px rgba(168, 85, 247, 0.6);
+            transform: scale(1.05);
+        }
+
+        .spec-tag {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 4px 12px;
+            border-radius: 8px;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #94a3b8;
+        }
+
+        @keyframes subtle-pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+
+        .pulse-glow {
+            animation: subtle-pulse 4s infinite ease-in-out;
+        }
+
+        .product-card {
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .product-card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .scroll-hide::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body>
+    <div class="mesh-bg"></div>
+
+    <!-- Floating Nav Island -->
+    <div class="fixed top-6 left-1/2 -translate-x-1/2 z-[100] w-[90%] max-w-4xl">
+        <nav class="nav-island px-8 py-4 flex justify-between items-center shadow-2xl">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500"></div>
+                <span class="font-extrabold tracking-tighter text-xl">LUMINA</span>
+            </div>
+            <div class="hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-widest text-gray-400">
+                <a href="#series" class="hover:text-white transition-colors">Neural_Link</a>
+                <a href="#experience" class="hover:text-white transition-colors">Experience</a>
+                <a href="#" class="hover:text-white transition-colors">Quantum_Store</a>
+            </div>
+            <div class="flex items-center gap-6">
+                <button onclick="toggleCart()" class="relative">
+                    <i class="fas fa-shopping-cart text-lg"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-indigo-600 text-[8px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Hero Section 2028 -->
+    <header class="relative min-h-screen flex flex-col items-center justify-center px-6 pt-20 overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-indigo-600/10 blur-[150px] rounded-full pulse-glow"></div>
+        
+        <div class="text-center z-10 max-w-5xl">
+            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-panel text-[10px] font-bold uppercase tracking-[0.2em] mb-10 text-indigo-300">
+                <span class="w-2 h-2 rounded-full bg-indigo-500 animate-ping"></span>
+                Now Shipping: Lumina Quantum v3
+            </div>
+            <h1 class="hero-title text-6xl md:text-[120px] font-extrabold leading-[0.85] tracking-tighter mb-12">
+                The Device That <br>Learns Your <span class="text-indigo-500 italic">Pulse.</span>
+            </h1>
+            <p class="text-gray-400 text-lg md:text-2xl max-w-2xl mx-auto leading-relaxed font-light mb-16">
+                Powered by the Neura-Core X8. Experience zero-latency neural interaction and a display that adapts to your ocular focus in real-time.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-8">
+                <button class="glow-btn px-12 py-5 rounded-2xl font-bold uppercase text-xs tracking-widest">Configure Intelligence</button>
+                <button class="px-12 py-5 rounded-2xl font-bold uppercase text-xs tracking-widest border border-white/10 hover:bg-white/5 transition-all">Explore Specs</button>
+            </div>
+        </div>
+
+        <!-- 2028 Device Reveal -->
+        <div class="mt-28 w-full max-w-6xl mx-auto relative px-4">
+            <div class="glass-panel p-4 rotate-x-12 transform-gpu">
+                <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&q=80&w=2400" 
+                     alt="Lumina Quantum" 
+                     class="rounded-[1.5rem] shadow-2xl opacity-80 hover:opacity-100 transition-opacity duration-1000">
+            </div>
+        </div>
+    </header>
+
+    <!-- Tech Grid -->
+    <section class="py-32 px-8 max-w-[1400px] mx-auto grid md:grid-cols-3 gap-8">
+        <div class="glass-panel p-10">
+            <div class="spec-tag mb-6">Neural_Sync</div>
+            <h3 class="text-2xl font-bold mb-4">Focus Tracking</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Advanced biometric sensors dim UI elements you aren't looking at, preserving battery life up to 48 hours.</p>
+        </div>
+        <div class="glass-panel p-10 bg-indigo-600/5 border-indigo-500/20">
+            <div class="spec-tag mb-6 text-indigo-400">Neura-Core X8</div>
+            <h3 class="text-2xl font-bold mb-4">Quantum Compute</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">The first laptop processor capable of local LLM training at 400 tokens per second. No cloud required.</p>
+        </div>
+        <div class="glass-panel p-10">
+            <div class="spec-tag mb-6">Haptic_Display</div>
+            <h3 class="text-2xl font-bold mb-4">Textural Screen</h3>
+            <p class="text-gray-500 text-sm leading-relaxed">Micro-vibrations across the glass surface simulate the feeling of paper, metal, or cloth under your fingertips.</p>
+        </div>
+    </section>
+
+    <!-- Product Series -->
+    <section id="series" class="py-32 px-8 max-w-[1400px] mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
+            <div>
+                <h2 class="text-5xl font-extrabold tracking-tighter">System Selection.</h2>
+                <p class="text-gray-500 mt-4 text-lg">Pick your vessel for the digital frontier.</p>
+            </div>
+            <div class="flex p-2 glass-panel rounded-full text-[10px] font-bold uppercase tracking-widest">
+                <button class="px-8 py-3 bg-white text-black rounded-full">Pro</button>
+                <button class="px-8 py-3 hover:text-indigo-400 transition-colors">Creative</button>
+                <button class="px-8 py-3 hover:text-indigo-400 transition-colors">Quantum</button>
+            </div>
+        </div>
+
+        <div id="product-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Dynamic Products -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-32 border-t border-white/5 px-8">
+        <div class="max-w-[1400px] mx-auto grid md:grid-cols-4 gap-20">
+            <div class="col-span-2">
+                <div class="flex items-center gap-2 mb-8">
+                    <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500"></div>
+                    <span class="font-extrabold tracking-tighter text-2xl">LUMINA</span>
+                </div>
+                <p class="text-gray-500 max-w-sm leading-relaxed">Standardizing the future of personal intelligence since 2024. Designed in Neo-Tokyo, built for the world.</p>
+            </div>
+            <div class="space-y-6">
+                <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-400">Node_Map</h4>
+                <a href="#" class="block text-gray-400 hover:text-white">Store</a>
+                <a href="#" class="block text-gray-400 hover:text-white">Benchmarks</a>
+                <a href="#" class="block text-gray-400 hover:text-white">Lab_Access</a>
+            </div>
+            <div class="space-y-6">
+                <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-400">Communication</h4>
+                <a href="#" class="block text-gray-400 hover:text-white">Neural_Feed</a>
+                <a href="#" class="block text-gray-400 hover:text-white">Support_Bot</a>
+                <a href="#" class="block text-gray-400 hover:text-white">Join_Dev</a>
+            </div>
+        </div>
+        <div class="max-w-[1400px] mx-auto mt-32 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between text-[10px] text-gray-600 font-bold uppercase tracking-widest gap-6">
+            <p>&copy; 2028 LUMINA CORP. SYNC STATUS: SECURE</p>
+            <div class="flex gap-10">
+                <a href="#">Privacy_Protocols</a>
+                <a href="#">Terms_Of_Sync</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 2028 Shopping Island (Sidebar) -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-[450px] bg-[#02040a]/80 backdrop-blur-3xl border-l border-white/10 z-[200] translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] flex flex-col">
+        <div class="p-10 border-b border-white/5 flex justify-between items-center">
+            <h3 class="text-2xl font-extrabold tracking-tighter uppercase">Allocated_Items</h3>
+            <button onclick="toggleCart()" class="w-10 h-10 rounded-full glass-panel flex items-center justify-center hover:scale-110 transition-transform">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="cart-items" class="flex-grow p-10 overflow-y-auto space-y-8 scroll-hide">
+            <div id="empty-cart-msg" class="h-full flex flex-col items-center justify-center text-gray-600 italic">
+                <span>[ NO_ALLOCATIONS_FOUND ]</span>
+            </div>
+        </div>
+        <div class="p-10 glass-panel m-6 mb-10">
+            <div class="flex justify-between items-baseline mb-8">
+                <span class="text-xs uppercase font-bold text-gray-500">System Value</span>
+                <span id="cart-total" class="text-4xl font-extrabold tracking-tighter">$0.00</span>
+            </div>
+            <button onclick="checkout()" class="glow-btn w-full py-6 rounded-2xl font-extrabold uppercase text-xs tracking-[0.2em]">Execute_Checkout</button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div id="notification" class="fixed bottom-10 left-10 glass-panel px-8 py-4 text-[10px] font-bold uppercase tracking-widest opacity-0 -translate-x-10 transition-all duration-500 z-[300] border-indigo-500/50">
+        Hardware Sync Successful
+    </div>
+
+    <script>
+        const products = [
+            { id: 1, name: "Quantum v3", category: "Neural", price: 2400, specs: "Liquid Crystal / Neura-Core X8", image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&q=80&w=800" },
+            { id: 2, name: "Studio Ultra", category: "Heavy", price: 4200, specs: "Haptic Pro / 256GB Unified", image: "https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?auto=format&fit=crop&q=80&w=800" },
+            { id: 3, name: "Air Nano", category: "Mobile", price: 1550, specs: "0.4cm Thin / Graphene Build", image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=800" },
+            { id: 4, name: "Synapse One", category: "Vision", price: 3100, specs: "Adaptive OLED / Eye-Tracking", image: "https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&q=80&w=800" },
+            { id: 5, name: "Eclipse Black", category: "Limited", price: 5000, specs: "Obsidian Shell / Gold Inlay", image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?auto=format&fit=crop&q=80&w=800" },
+            { id: 6, name: "Aero Modular", category: "Sustainable", price: 1850, specs: "100% Recycled / Upgradable", image: "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&q=80&w=800" }
+        ];
+
+        let cart = [];
+
+        function renderProducts() {
+            const container = document.getElementById('product-list');
+            container.innerHTML = products.map(p => `
+                <div class="product-card glass-panel p-6 flex flex-col group border-white/5">
+                    <div class="relative aspect-video rounded-2xl overflow-hidden mb-8">
+                        <img src="${p.image}" class="w-full h-full object-cover grayscale-[0.6] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000">
+                        <div class="absolute inset-0 bg-indigo-900/10 group-hover:bg-transparent transition-all"></div>
+                    </div>
+                    <div class="flex-grow">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <span class="text-[9px] font-bold text-indigo-400 uppercase tracking-widest mb-1 block">${p.category}_System</span>
+                                <h3 class="text-2xl font-extrabold tracking-tighter uppercase">${p.name}</h3>
+                            </div>
+                            <span class="font-extrabold text-xl tracking-tighter">$${p.price.toLocaleString()}</span>
+                        </div>
+                        <p class="text-gray-500 text-xs font-medium mb-8 uppercase tracking-wide">${p.specs}</p>
+                    </div>
+                    <button onclick="addToCart(${p.id})" class="w-full border border-white/10 py-4 rounded-xl font-bold text-[10px] uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all">
+                        Sync_Allocation
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            cart.push(product);
+            updateCartUI();
+            showNotification();
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const list = document.getElementById('cart-items');
+            const total = document.getElementById('cart-total');
+            const empty = document.getElementById('empty-cart-msg');
+
+            if (cart.length === 0) {
+                empty.style.display = 'flex';
+                list.innerHTML = '';
+            } else {
+                empty.style.display = 'none';
+                list.innerHTML = cart.map((item, index) => `
+                    <div class="flex gap-6 items-center p-4 glass-panel border-white/10">
+                        <img src="${item.image}" class="w-16 h-16 rounded-xl object-cover grayscale">
+                        <div class="flex-grow">
+                            <h4 class="font-extrabold text-sm uppercase tracking-tight">${item.name}</h4>
+                            <p class="text-indigo-400 font-bold text-xs">$${item.price.toLocaleString()}</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-gray-600 hover:text-red-500 transition-colors">
+                            <i class="fas fa-trash-alt text-xs"></i>
+                        </button>
+                    </div>
+                `).join('');
+            }
+            total.innerText = `$${cart.reduce((s, i) => s + i.price, 0).toLocaleString()}`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function toggleCart() {
+            document.getElementById('cart-sidebar').classList.toggle('translate-x-full');
+        }
+
+        function showNotification() {
+            const toast = document.getElementById('notification');
+            toast.style.opacity = '1';
+            toast.style.transform = 'translateX(0)';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                toast.style.transform = 'translateX(-2.5rem)';
+            }, 2500);
+        }
+
+        function checkout() {
+            if (cart.length === 0) return;
+            alert("LUMINA_OS: Syncing purchase to your Neural_ID. Thank you.");
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+
+        window.onload = renderProducts;
+    </script>
+</body>
+</html>
